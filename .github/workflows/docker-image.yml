@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up environment variables
+        run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
+        
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -30,4 +33,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: guessing-game:$(date +%s)
+          tags: guessing-game:$TIMESTAMP
